@@ -30,16 +30,17 @@
     <div id="calendar"></div>
 
     <script>
-        // FullCalendar initialization
+        let calendar;
+
         document.addEventListener("DOMContentLoaded", function() {
             var calendarEl = document.getElementById("calendar");
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: "dayGridMonth"
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: "dayGridMonth",
+                events: []  // Initialize with an empty array of events
             });
             calendar.render();
         });
 
-        // Add Task function
         function addTask() {
             var taskName = document.getElementById("taskName").value;
             var taskDuration = document.getElementById("taskDuration").value;
