@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Scheduler</title>
+</head>
+<body>
+    <h2>Task Scheduler</h2>
+    <label>Wake-up Time: <input type="time" id="wakeTime"></label><br>
+    <label>Bedtime: <input type="time" id="bedTime"></label><br>
+    <label>Work Start: <input type="time" id="workStart"></label><br>
+    <label>Work End: <input type="time" id="workEnd"></label><br>
+
+    <h3>Add Task</h3>
+    <input type="text" id="taskName" placeholder="Task Name">
+    <input type="number" id="taskDuration" placeholder="Duration (minutes)">
+    <input type="text" id="taskDays" placeholder="Days (e.g., Mon, Wed)">
+    <select id="taskFrequency">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+    </select>
+    <button onclick="addTask()">Add Task</button>
+
+    <h3>Schedule</h3>
+    <pre id="scheduleOutput"></pre>
+
+    <script src="scheduler.js"></script>
+</body>
+</html>
