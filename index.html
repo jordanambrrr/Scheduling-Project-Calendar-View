@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Scheduler</title>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 </head>
 <body>
     <h2>Task Scheduler</h2>
@@ -25,6 +26,39 @@
     <h3>Schedule</h3>
     <pre id="scheduleOutput"></pre>
 
-    <script src="scheduler.js"></script>
+    <h3>Calendar</h3>
+    <div id="calendar"></div>
+
+    <script>
+        // FullCalendar initialization
+        document.addEventListener("DOMContentLoaded", function() {
+            var calendarEl = document.getElementById("calendar");
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: "dayGridMonth"
+            });
+            calendar.render();
+        });
+
+        // Add Task function
+        function addTask() {
+            var taskName = document.getElementById("taskName").value;
+            var taskDuration = document.getElementById("taskDuration").value;
+            var taskDays = document.getElementById("taskDays").value;
+            var taskFrequency = document.getElementById("taskFrequency").value;
+
+            // For simplicity, adding the task to the output
+            var scheduleOutput = document.getElementById("scheduleOutput");
+            var taskDetails = `Task: ${taskName}, Duration: ${taskDuration} mins, Days: ${taskDays}, Frequency: ${taskFrequency}`;
+            scheduleOutput.textContent += taskDetails + "\n";
+
+            // Optional: Add tasks to calendar as events (basic example)
+            var eventDate = new Date(); // Default to today for simplicity
+            calendar.addEvent({
+                title: taskName,
+                start: eventDate, // You could enhance this to dynamically set based on user input
+                end: new Date(eventDate.getTime() + taskDuration * 60000) // Assuming the task duration is in minutes
+            });
+        }
+    </script>
 </body>
 </html>
